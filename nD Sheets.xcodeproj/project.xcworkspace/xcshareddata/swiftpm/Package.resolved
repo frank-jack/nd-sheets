@@ -1,0 +1,41 @@
+{
+  "pins" : [
+    {
+      "identity" : "lottie-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-ios",
+      "state" : {
+        "revision" : "4e51b71c6ef1b645c9a83de112d627c919143137",
+        "version" : "4.1.3"
+      }
+    },
+    {
+      "identity" : "setting",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aheze/Setting",
+      "state" : {
+        "revision" : "a9db747de0ad6dbe425ec61e003944cd329ba62a",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "simultaneouslyscrollview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stonko1994/SimultaneouslyScrollView.git",
+      "state" : {
+        "revision" : "03283fcc014e01c8a45882dcbcf3cf719854e3c1",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/SwiftUI-Introspect.git",
+      "state" : {
+        "revision" : "f2616860a41f9d9932da412a8978fec79c06fe24",
+        "version" : "0.1.4"
+      }
+    }
+  ],
+  "version" : 2
+}
