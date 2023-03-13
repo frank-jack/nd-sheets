@@ -295,7 +295,6 @@ final class ModelData: ObservableObject {
         dimsHiddenValues = [Int]()
         initCall()
     }
-    
     private static func fileURL() throws -> URL {
         try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         .appendingPathComponent("list.data")

@@ -57,11 +57,17 @@ struct ContentView: View {
                                         modelData.initCall()
                                     })
                                     Menu {
+                                        Button(action: {
+                                            let sheet = Sheet(sheet: modelData.sheetList[sheetId].sheet, title: modelData.sheetList[sheetId].title, size: modelData.sheetList[sheetId].size, dim1: modelData.sheetList[sheetId].dim1, dim2: modelData.sheetList[sheetId].dim2)
+                                            modelData.sheetList.append(sheet)
+                                        }, label: {
+                                            Label("Make a copy", systemImage: "doc.on.doc")
+                                        })
                                         Button(role: .destructive, action: {
                                             modelData.sheetList.remove(at: sheetId)
-                                        }) {
+                                        }, label: {
                                             Label("Delete", systemImage: "trash")
-                                        }
+                                        })
                                     } label: {
                                         Label("", systemImage: "ellipsis")
                                             .foregroundColor(.black)

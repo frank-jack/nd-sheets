@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct Sheet: Hashable, Identifiable, Codable {
-    let id = UUID()
+struct Sheet: Hashable, Codable {
     var sheet: [Cell]
     var title: String
     var size: [Int]
