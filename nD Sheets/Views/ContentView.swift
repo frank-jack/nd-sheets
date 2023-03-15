@@ -58,7 +58,7 @@ struct ContentView: View {
                                     })
                                     Menu {
                                         Button(action: {
-                                            let sheet = Sheet(sheet: modelData.sheetList[sheetId].sheet, title: modelData.sheetList[sheetId].title, size: modelData.sheetList[sheetId].size, dim1: modelData.sheetList[sheetId].dim1, dim2: modelData.sheetList[sheetId].dim2)
+                                            let sheet = Sheet(sheet: modelData.sheetList[sheetId].sheet, title: "Copy of "+modelData.sheetList[sheetId].title, size: modelData.sheetList[sheetId].size, dim1: modelData.sheetList[sheetId].dim1, dim2: modelData.sheetList[sheetId].dim2)
                                             modelData.sheetList.append(sheet)
                                         }, label: {
                                             Label("Make a copy", systemImage: "doc.on.doc")
