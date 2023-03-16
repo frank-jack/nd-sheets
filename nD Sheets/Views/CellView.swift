@@ -15,11 +15,12 @@ struct CellView: View {
     @State private var text = ""
     @State private var borderColor = Color.black.opacity(0.4)
     @State private var borderWidth = 1
+    //@State private var showTextEditor = true //iOS 16.4 needed
     var body: some View {
         /*TextField("", text: $text, axis: .vertical)
             .frame(width: 120, height: 21)
             .border(.black.opacity(0.4))*/
-        Button(action: {
+        /*Button(action: {
             if modelData.idHighlighted != cell.id {
                 borderColor = .blue
                 borderWidth = 3
@@ -37,6 +38,52 @@ struct CellView: View {
                 .frame(width: 120, height: 21)
                 .border(borderColor, width: CGFloat(borderWidth))
                 .foregroundColor(.black)
+        }*/
+        ZStack {
+            if modelData.idHighlighted != cell.id {
+                ZStack {
+                    Rectangle()
+                        .fill(.white)
+                        .frame(width: 120, height: 21)
+                        .border(borderColor, width: CGFloat(borderWidth))
+                    TextField("", text: $text, axis: .vertical)
+                        .disabled(true)
+                        .multilineTextAlignment(.leading)
+                }
+                .onTapGesture {
+                    if modelData.idHighlighted != cell.id {
+                        borderColor = .blue
+                        borderWidth = 3
+                        modelData.idHighlighted = cell.id
+                    }
+                }
+            } else {
+                Menu {
+                    if modelData.idHighlighted == cell.id {
+                        Button("Copy") {
+                            UIPasteboard.general.setValue(text, forPasteboardType: "public.plain-text")
+                        }
+                        Button("Paste") {
+                            text = UIPasteboard.general.string ?? ""
+                        }
+                        Button("Cut") {
+                            UIPasteboard.general.setValue(text, forPasteboardType: "public.plain-text")
+                            text = ""
+                            cell.text = ""
+                        }
+                    }
+                } label: {
+                    ZStack {
+                        Rectangle()
+                            .fill(.white)
+                            .frame(width: 120, height: 21)
+                            .border(borderColor, width: CGFloat(borderWidth))
+                        TextField("", text: $text, axis: .vertical)
+                            .disabled(true)
+                            .multilineTextAlignment(.leading)
+                    }
+                }
+            }
         }
         .onChange(of: modelData.idHighlighted) { newValue in
             if modelData.idHighlighted != cell.id && borderWidth == 3 {
@@ -70,5 +117,10 @@ struct CellView: View {
             cell = modelData.getCell(pos: modelData.getPos(row: row, col: col))
             text = cell.text
         }
+        /*.sheet(isPresented: $showTextEditor) {
+            //Put text editor here at iOS 16.4
+            .presentationDetents([.height(20)])
+            .presentationBackgroundInteraction(.enabled) //Needs iOS 16.4 to work
+        }*/
     }
 }
